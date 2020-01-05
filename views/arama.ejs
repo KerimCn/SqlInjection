@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<form action="/arama" method="post">
+  <div class="container">
+    <label><b>Kullanıcı Id'si</b></label>
+    <input type="text" placeholder="Enter Username" name="name" required>
+        
+    <button type="submit">Gönder</button>
+  </div>
+
+ <% if(typeof row!='undefined') {%>
+  <table border="1px" style="margin:  0 auto;">
+      <tr>
+          <th>ID</th>
+          <th>Isım</th>
+          <th>SoyIsım</th>
+        </tr>
+      <% row.forEach((r)=>{%>
+        <tr>
+          <td><%= r.id %></td>
+          <td><%= r.name %></td>
+          <td><%= r.id %></td>
+        </tr>
+      <%})%>
+  </table>
+  <span>Kaç tane: <%= row.length %></span>
+
+  
+  <%} %>
+</form>
+
+<script>
+    if(document.location.hash === '#unauthorized') {
+        document.write('<div class="unauthorized">Invalid Username or Password</div>');
+    } else if(document.location.hash === '#error') {
+        document.write('<div class="error">An error has occured</div>');
+    }
+  </script>
+
+</body>
+</html>
